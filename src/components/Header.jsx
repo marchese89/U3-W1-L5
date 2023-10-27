@@ -38,9 +38,7 @@ class Header extends Component {
               id="filter"
               className="text-white ms-5 py-1 px-2"
             >
-              <option value="1" selected>
-                Genres
-              </option>
+              <option value="1">Genres</option>
               <option value="2">Filter 2</option>
               <option value="3">Filter 3</option>
             </select>
