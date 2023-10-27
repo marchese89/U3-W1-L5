@@ -172,6 +172,14 @@ a {
   }
 }
 
+#settings a {
+  color: #4c85b3;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 h6 {
   color: #b3b3b3;
 }
@@ -179,4 +187,13 @@ h6 {
 #uhd {
   border: 2px solid black;
   padding: 0.1em;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    text-decoration: none;
+  }
 }

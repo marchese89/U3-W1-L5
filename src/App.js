@@ -1,15 +1,23 @@
 import "./custom.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./components/Header";
 import Main from "./components/Main";
-import Footer from "./components/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import Profile from "./components/Profile";
+import Settings from "./components/Settings";
 
 function App() {
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Main />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
