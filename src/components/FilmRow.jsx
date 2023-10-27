@@ -6,6 +6,12 @@ class FilmRow extends Component {
     filmImages: [],
     isLoading: false,
   };
+  networkError() {
+    this.props.handleError.setState({
+      error: true,
+      errorMessage: "errore di rete",
+    });
+  }
 
   readFilms = async (query) => {
     this.setState({ isLoading: true });
@@ -17,10 +23,7 @@ class FilmRow extends Component {
         const data = await response.json();
         if (data["Response"] === "False") {
           this.setState({ isLoading: false });
-          this.props.handleError.setState({
-            error: true,
-            errorMessage: "errore di rete",
-          });
+          this.networkError();
         } else {
           this.setState({ filmImages: data["Search"].slice(0, 6) });
           this.setState({ isLoading: false });
@@ -30,17 +33,11 @@ class FilmRow extends Component {
         }
       } else {
         this.setState({ isLoading: false });
-        this.props.handleError.setState({
-          error: true,
-          errorMessage: "errore di rete",
-        });
+        this.networkError();
       }
     } catch (error) {
       this.setState({ isLoading: false });
-      this.props.handleError.setState({
-        error: true,
-        errorMessage: error,
-      });
+      this.networkError();
       console.error("ERRORE!", error);
     }
   };
